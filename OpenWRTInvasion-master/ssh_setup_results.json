@@ -1,0 +1,87 @@
+{
+  "timestamp": "2025-09-14 10:47:01",
+  "config": {
+    "hostname": "192.168.2.1",
+    "username": "root",
+    "port": 22
+  },
+  "summary": {
+    "total_commands": 9,
+    "successful": 8,
+    "total_time": 67.80622243881226
+  },
+  "results": [
+    {
+      "command": "uci show network",
+      "success": true,
+      "output": "network.loopback=interface\nnetwork.loopback.device='lo'\nnetwork.loopback.proto='static'\nnetwork.loopback.ipaddr='127.0.0.1'\nnetwork.loopback.netmask='255.0.0.0'\nnetwork.globals=globals\nnetwork.globals.ula_prefix='fd33:bec4:b4cd::/48'\nnetwork.@device[0]=device\nnetwork.@device[0].name='br-lan'\nnetwork.@device[0].type='bridge'\nnetwork.@device[0].ports='eth0.1'\nnetwork.lan=interface\nnetwork.lan.device='br-lan'\nnetwork.lan.proto='static'\nnetwork.lan.netmask='255.255.255.0'\nnetwork.lan.ip6assign='60'\nnetwork.lan.ipaddr='192.168.2.1'\nnetwork.@device[1]=device\nnetwork.@device[1].name='eth0.2'\nnetwork.@device[1].macaddr='8c:de:f9:dd:4a:8f'\nnetwork.wan=interface\nnetwork.wan.device='eth0.2'\nnetwork.wan.proto='dhcp'\nnetwork.wan.metric='10'\nnetwork.@switch[0]=switch\nnetwork.@switch[0].name='switch0'\nnetwork.@switch[0].reset='1'\nnetwork.@switch[0].enable_vlan='1'\nnetwork.@switch_vlan[0]=switch_vlan\nnetwork.@switch_vlan[0].device='switch0'\nnetwork.@switch_vlan[0].vlan='1'\nnetwork.@switch_vlan[0].ports='6t 4'\nnetwork.@switch_vlan[1]=switch_vlan\nnetwork.@switch_vlan[1].device='switch0'\nnetwork.@switch_vlan[1].vlan='2'\nnetwork.@switch_vlan[1].ports='6t 1'\nnetwork.@switch_vlan[2]=switch_vlan\nnetwork.@switch_vlan[2].device='switch0'\nnetwork.@switch_vlan[2].vlan='3'\nnetwork.@switch_vlan[2].ports='6t 2'\nnetwork.wanb=interface\nnetwork.wanb.proto='dhcp'\nnetwork.wanb.device='eth0.3'\nnetwork.wanb.metric='20'\nnetwork.trm_wwan=interface\nnetwork.trm_wwan.proto='dhcp'\nnetwork.trm_wwan.device='radio0.network2'\nnetwork.trm_wwan.metric='30'\n",
+      "error": "",
+      "execution_time": 0.08052468299865723,
+      "retry_count": 0
+    },
+    {
+      "command": "uci show firewall",
+      "success": true,
+      "output": "firewall.@defaults[0]=defaults\nfirewall.@defaults[0].syn_flood='1'\nfirewall.@defaults[0].input='ACCEPT'\nfirewall.@defaults[0].output='ACCEPT'\nfirewall.@defaults[0].forward='REJECT'\nfirewall.@zone[0]=zone\nfirewall.@zone[0].name='lan'\nfirewall.@zone[0].input='ACCEPT'\nfirewall.@zone[0].output='ACCEPT'\nfirewall.@zone[0].forward='ACCEPT'\nfirewall.@zone[0].network='lan'\nfirewall.@zone[1]=zone\nfirewall.@zone[1].name='wan'\nfirewall.@zone[1].input='REJECT'\nfirewall.@zone[1].output='ACCEPT'\nfirewall.@zone[1].forward='REJECT'\nfirewall.@zone[1].masq='1'\nfirewall.@zone[1].mtu_fix='1'\nfirewall.@zone[1].network='wan' 'wanb' 'trm_wwan'\nfirewall.@forwarding[0]=forwarding\nfirewall.@forwarding[0].src='lan'\nfirewall.@forwarding[0].dest='wan'\nfirewall.@rule[0]=rule\nfirewall.@rule[0].name='Allow-DHCP-Renew'\nfirewall.@rule[0].src='wan'\nfirewall.@rule[0].proto='udp'\nfirewall.@rule[0].dest_port='68'\nfirewall.@rule[0].target='ACCEPT'\nfirewall.@rule[0].family='ipv4'\nfirewall.@rule[1]=rule\nfirewall.@rule[1].name='Allow-Ping'\nfirewall.@rule[1].src='wan'\nfirewall.@rule[1].proto='icmp'\nfirewall.@rule[1].icmp_type='echo-request'\nfirewall.@rule[1].family='ipv4'\nfirewall.@rule[1].target='ACCEPT'\nfirewall.@rule[2]=rule\nfirewall.@rule[2].name='Allow-IGMP'\nfirewall.@rule[2].src='wan'\nfirewall.@rule[2].proto='igmp'\nfirewall.@rule[2].family='ipv4'\nfirewall.@rule[2].target='ACCEPT'\nfirewall.@rule[3]=rule\nfirewall.@rule[3].name='Allow-DHCPv6'\nfirewall.@rule[3].src='wan'\nfirewall.@rule[3].proto='udp'\nfirewall.@rule[3].dest_port='546'\nfirewall.@rule[3].family='ipv6'\nfirewall.@rule[3].target='ACCEPT'\nfirewall.@rule[4]=rule\nfirewall.@rule[4].name='Allow-MLD'\nfirewall.@rule[4].src='wan'\nfirewall.@rule[4].proto='icmp'\nfirewall.@rule[4].src_ip='fe80::/10'\nfirewall.@rule[4].icmp_type='130/0' '131/0' '132/0' '143/0'\nfirewall.@rule[4].family='ipv6'\nfirewall.@rule[4].target='ACCEPT'\nfirewall.@rule[5]=rule\nfirewall.@rule[5].name='Allow-ICMPv6-Input'\nfirewall.@rule[5].src='wan'\nfirewall.@rule[5].proto='icmp'\nfirewall.@rule[5].icmp_type='echo-request' 'echo-reply' 'destination-unreachable' 'packet-too-big' 'time-exceeded' 'bad-header' 'unknown-header-type' 'router-solicitation' 'neighbour-solicitation' 'router-advertisement' 'neighbour-advertisement'\nfirewall.@rule[5].limit='1000/sec'\nfirewall.@rule[5].family='ipv6'\nfirewall.@rule[5].target='ACCEPT'\nfirewall.@rule[6]=rule\nfirewall.@rule[6].name='Allow-ICMPv6-Forward'\nfirewall.@rule[6].src='wan'\nfirewall.@rule[6].dest='*'\nfirewall.@rule[6].proto='icmp'\nfirewall.@rule[6].icmp_type='echo-request' 'echo-reply' 'destination-unreachable' 'packet-too-big' 'time-exceeded' 'bad-header' 'unknown-header-type'\nfirewall.@rule[6].limit='1000/sec'\nfirewall.@rule[6].family='ipv6'\nfirewall.@rule[6].target='ACCEPT'\nfirewall.@rule[7]=rule\nfirewall.@rule[7].name='Allow-IPSec-ESP'\nfirewall.@rule[7].src='wan'\nfirewall.@rule[7].dest='lan'\nfirewall.@rule[7].proto='esp'\nfirewall.@rule[7].target='ACCEPT'\nfirewall.@rule[8]=rule\nfirewall.@rule[8].name='Allow-ISAKMP'\nfirewall.@rule[8].src='wan'\nfirewall.@rule[8].dest='lan'\nfirewall.@rule[8].dest_port='500'\nfirewall.@rule[8].proto='udp'\nfirewall.@rule[8].target='ACCEPT'\n",
+      "error": "",
+      "execution_time": 0.08671808242797852,
+      "retry_count": 0
+    },
+    {
+      "command": "opkg list-installed | grep mwan3",
+      "success": false,
+      "output": "",
+      "error": "",
+      "execution_time": 0.23896026611328125,
+      "retry_count": 0
+    },
+    {
+      "command": "opkg update",
+      "success": true,
+      "output": "Downloading https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/generic/Packages.gz\nUpdated list of available packages in /var/opkg-lists/custom_generic\nDownloading https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/mipsel_24kc/Packages.gz\nUpdated list of available packages in /var/opkg-lists/custom_arch\nDownloading https://downloads.openwrt.org/releases/22.03.3/targets/ramips/mt76x8/packages/Packages.gz\nUpdated list of available packages in /var/opkg-lists/openwrt_core\nDownloading https://downloads.openwrt.org/releases/22.03.3/packages/mipsel_24kc/base/Packages.gz\nUpdated list of available packages in /var/opkg-lists/openwrt_base\nDownloading https://downloads.openwrt.org/releases/22.03.3/packages/mipsel_24kc/luci/Packages.gz\nUpdated list of available packages in /var/opkg-lists/openwrt_luci\nDownloading https://downloads.openwrt.org/releases/22.03.3/packages/mipsel_24kc/packages/Packages.gz\nUpdated list of available packages in /var/opkg-lists/openwrt_packages\nDownloading https://downloads.openwrt.org/releases/22.03.3/packages/mipsel_24kc/routing/Packages.gz\nUpdated list of available packages in /var/opkg-lists/openwrt_routing\nDownloading https://downloads.openwrt.org/releases/22.03.3/packages/mipsel_24kc/telephony/Packages.gz\nUpdated list of available packages in /var/opkg-lists/openwrt_telephony\n",
+      "error": "",
+      "execution_time": 5.755220174789429,
+      "retry_count": 0
+    },
+    {
+      "command": "opkg install luci-app-mwan3",
+      "success": true,
+      "output": "Installing luci-app-mwan3 (git-23.093.40772-fa4dc75) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/packages/mipsel_24kc/luci/luci-app-mwan3_git-23.093.40772-fa4dc75_all.ipk\nInstalling ip-tiny (5.15.0-4) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/packages/mipsel_24kc/base/ip-tiny_5.15.0-4_mipsel_24kc.ipk\nInstalling kmod-nf-ipt (5.10.161-1) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/targets/ramips/mt76x8/packages/kmod-nf-ipt_5.10.161-1_mipsel_24kc.ipk\nInstalling kmod-ipt-core (5.10.161-1) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/targets/ramips/mt76x8/packages/kmod-ipt-core_5.10.161-1_mipsel_24kc.ipk\nInstalling kmod-ipt-ipset (5.10.161-1) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/targets/ramips/mt76x8/packages/kmod-ipt-ipset_5.10.161-1_mipsel_24kc.ipk\nInstalling libipset13 (7.15-2) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/packages/mipsel_24kc/base/libipset13_7.15-2_mipsel_24kc.ipk\nInstalling ipset (7.15-2) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/packages/mipsel_24kc/base/ipset_7.15-2_mipsel_24kc.ipk\nInstalling libip4tc2 (1.8.7-7) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/targets/ramips/mt76x8/packages/libip4tc2_1.8.7-7_mipsel_24kc.ipk\nInstalling libip6tc2 (1.8.7-7) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/targets/ramips/mt76x8/packages/libip6tc2_1.8.7-7_mipsel_24kc.ipk\nInstalling libxtables12 (1.8.7-7) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/targets/ramips/mt76x8/packages/libxtables12_1.8.7-7_mipsel_24kc.ipk\nInstalling libiptext0 (1.8.7-7) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/targets/ramips/mt76x8/packages/libiptext0_1.8.7-7_mipsel_24kc.ipk\nInstalling libiptext6-0 (1.8.7-7) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/targets/ramips/mt76x8/packages/libiptext6-0_1.8.7-7_mipsel_24kc.ipk\nInstalling xtables-legacy (1.8.7-7) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/targets/ramips/mt76x8/packages/xtables-legacy_1.8.7-7_mipsel_24kc.ipk\nInstalling iptables-zz-legacy (1.8.7-7) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/targets/ramips/mt76x8/packages/iptables-zz-legacy_1.8.7-7_mipsel_24kc.ipk\nInstalling kmod-nf-ipt6 (5.10.161-1) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/targets/ramips/mt76x8/packages/kmod-nf-ipt6_5.10.161-1_mipsel_24kc.ipk\nInstalling kmod-ip6tables (5.10.161-1) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/targets/ramips/mt76x8/packages/kmod-ip6tables_5.10.161-1_mipsel_24kc.ipk\nInstalling ip6tables-zz-legacy (1.8.7-7) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/targets/ramips/mt76x8/packages/ip6tables-zz-legacy_1.8.7-7_mipsel_24kc.ipk\nInstalling kmod-ipt-conntrack (5.10.161-1) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/targets/ramips/mt76x8/packages/kmod-ipt-conntrack_5.10.161-1_mipsel_24kc.ipk\nInstalling kmod-ipt-conntrack-extra (5.10.161-1) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/targets/ramips/mt76x8/packages/kmod-ipt-conntrack-extra_5.10.161-1_mipsel_24kc.ipk\nInstalling kmod-ipt-raw (5.10.161-1) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/targets/ramips/mt76x8/packages/kmod-ipt-raw_5.10.161-1_mipsel_24kc.ipk\nInstalling iptables-mod-conntrack-extra (1.8.7-7) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/targets/ramips/mt76x8/packages/iptables-mod-conntrack-extra_1.8.7-7_mipsel_24kc.ipk\nInstalling kmod-ipt-ipopt (5.10.161-1) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/targets/ramips/mt76x8/packages/kmod-ipt-ipopt_5.10.161-1_mipsel_24kc.ipk\nInstalling iptables-mod-ipopt (1.8.7-7) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/targets/ramips/mt76x8/packages/iptables-mod-ipopt_1.8.7-7_mipsel_24kc.ipk\nInstalling mwan3 (2.11.7-2) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/packages/mipsel_24kc/packages/mwan3_2.11.7-2_all.ipk\nConfiguring ip-tiny.\nConfiguring kmod-nf-ipt.\nConfiguring kmod-ipt-core.\nConfiguring kmod-ipt-ipset.\nConfiguring libipset13.\nConfiguring ipset.\nConfiguring libip4tc2.\nConfiguring libip6tc2.\nConfiguring libxtables12.\nConfiguring libiptext0.\nConfiguring libiptext6-0.\nConfiguring xtables-legacy.\nConfiguring iptables-zz-legacy.\nConfiguring kmod-nf-ipt6.\nConfiguring kmod-ip6tables.\nConfiguring ip6tables-zz-legacy.\nConfiguring kmod-ipt-conntrack.\nConfiguring kmod-ipt-conntrack-extra.\nConfiguring kmod-ipt-raw.\nConfiguring iptables-mod-conntrack-extra.\nConfiguring kmod-ipt-ipopt.\nConfiguring iptables-mod-ipopt.\nConfiguring mwan3.\nConfiguring luci-app-mwan3.\n",
+      "error": "Collected errors:\n * resolve_conffiles: Existing conffile /etc/config/mwan3 is different from the conffile in the new package. The new conffile will be placed at /etc/config/mwan3-opkg.\n",
+      "execution_time": 47.633923292160034,
+      "retry_count": 0
+    },
+    {
+      "command": "opkg install luci-app-mwan3 luci-i18n-mwan3-zh-cn",
+      "success": true,
+      "output": "Package luci-app-mwan3 (git-23.093.40772-fa4dc75) installed in root is up to date.\nInstalling luci-i18n-mwan3-zh-cn (git-24.200.33193-374888b) to root...\nDownloading https://downloads.openwrt.org/releases/22.03.3/packages/mipsel_24kc/luci/luci-i18n-mwan3-zh-cn_git-24.200.33193-374888b_all.ipk\nConfiguring luci-i18n-mwan3-zh-cn.\n",
+      "error": "",
+      "execution_time": 9.7003014087677,
+      "retry_count": 0
+    },
+    {
+      "command": "/etc/init.d/mwan3 enable",
+      "success": true,
+      "output": "",
+      "error": "",
+      "execution_time": 0.2641284465789795,
+      "retry_count": 0
+    },
+    {
+      "command": "/etc/init.d/mwan3 start",
+      "success": true,
+      "output": "",
+      "error": "",
+      "execution_time": 4.017332553863525,
+      "retry_count": 0
+    },
+    {
+      "command": "uci show mwan3",
+      "success": true,
+      "output": "mwan3.globals=globals\nmwan3.globals.mmx_mask='0x3F00'\nmwan3.wan=interface\nmwan3.wan.enabled='1'\nmwan3.wan.track_ip='8.8.4.4' '8.8.8.8' '208.67.222.222' '208.67.220.220'\nmwan3.wan.family='ipv4'\nmwan3.wan.initial_state='online'\nmwan3.wan.track_method='ping'\nmwan3.wan.reliability='1'\nmwan3.wan.count='1'\nmwan3.wan.size='56'\nmwan3.wan.max_ttl='60'\nmwan3.wan.timeout='4'\nmwan3.wan.interval='10'\nmwan3.wan.failure_interval='5'\nmwan3.wan.recovery_interval='5'\nmwan3.wan.down='5'\nmwan3.wan.up='5'\nmwan3.wanb=interface\nmwan3.wanb.track_ip='8.8.4.4' '8.8.8.8' '208.67.222.222' '208.67.220.220'\nmwan3.wanb.family='ipv4'\nmwan3.wanb.reliability='1'\nmwan3.wanb.enabled='1'\nmwan3.wanb.initial_state='online'\nmwan3.wanb.track_method='ping'\nmwan3.wanb.count='1'\nmwan3.wanb.size='56'\nmwan3.wanb.max_ttl='60'\nmwan3.wanb.timeout='4'\nmwan3.wanb.interval='10'\nmwan3.wanb.failure_interval='5'\nmwan3.wanb.recovery_interval='5'\nmwan3.wanb.down='5'\nmwan3.wanb.up='5'\nmwan3.wan_m1_w3=member\nmwan3.wan_m1_w3.interface='wan'\nmwan3.wan_m1_w3.metric='1'\nmwan3.wan_m1_w3.weight='3'\nmwan3.wan_m2_w3=member\nmwan3.wan_m2_w3.interface='wan'\nmwan3.wan_m2_w3.metric='2'\nmwan3.wan_m2_w3.weight='3'\nmwan3.wanb_m1_w2=member\nmwan3.wanb_m1_w2.interface='wanb'\nmwan3.wanb_m1_w2.metric='1'\nmwan3.wanb_m1_w2.weight='3'\nmwan3.wanb_m2_w2=member\nmwan3.wanb_m2_w2.interface='wanb'\nmwan3.wanb_m2_w2.metric='2'\nmwan3.wanb_m2_w2.weight='3'\nmwan3.wan_only=policy\nmwan3.wan_only.use_member='wan_m1_w3' 'wan_m2_w3'\nmwan3.wan_only.last_resort='unreachable'\nmwan3.wanb_only=policy\nmwan3.wanb_only.use_member='wanb_m1_w2' 'wanb_m2_w2'\nmwan3.wanb_only.last_resort='unreachable'\nmwan3.balanced=policy\nmwan3.balanced.last_resort='unreachable'\nmwan3.balanced.use_member='wan_m1_w3' 'wan_m2_w3' 'wanb_m1_w2' 'wanb_m2_w2' 'trm_wwan_m1_w4' 'trm_wwan_m2_w4'\nmwan3.https=rule\nmwan3.https.sticky='1'\nmwan3.https.dest_port='443'\nmwan3.https.proto='tcp'\nmwan3.https.use_policy='balanced'\nmwan3.default_rule_v4=rule\nmwan3.default_rule_v4.dest_ip='0.0.0.0/0'\nmwan3.default_rule_v4.use_policy='balanced'\nmwan3.default_rule_v4.family='ipv4'\nmwan3.trm_wwan=interface\nmwan3.trm_wwan.enabled='1'\nmwan3.trm_wwan.initial_state='online'\nmwan3.trm_wwan.family='ipv4'\nmwan3.trm_wwan.track_method='ping'\nmwan3.trm_wwan.reliability='1'\nmwan3.trm_wwan.count='1'\nmwan3.trm_wwan.size='56'\nmwan3.trm_wwan.max_ttl='60'\nmwan3.trm_wwan.timeout='4'\nmwan3.trm_wwan.interval='10'\nmwan3.trm_wwan.failure_interval='5'\nmwan3.trm_wwan.recovery_interval='5'\nmwan3.trm_wwan.down='5'\nmwan3.trm_wwan.up='5'\nmwan3.trm_wwan_m1_w4=member\nmwan3.trm_wwan_m1_w4.interface='trm_wwan'\nmwan3.trm_wwan_m1_w4.metric='1'\nmwan3.trm_wwan_m1_w4.weight='3'\nmwan3.trm_wwan_m2_w4=member\nmwan3.trm_wwan_m2_w4.interface='trm_wwan'\nmwan3.trm_wwan_m2_w4.metric='2'\nmwan3.trm_wwan_m2_w4.weight='3'\nmwan3.trm_wwan_only=policy\nmwan3.trm_wwan_only.use_member='trm_wwan_m1_w4' 'trm_wwan_m2_w4'\nmwan3.trm_wwan_only.last_resort='unreachable'\n",
+      "error": "",
+      "execution_time": 0.0291135311126709,
+      "retry_count": 0
+    }
+  ]
+}
