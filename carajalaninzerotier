@@ -1,0 +1,5 @@
+python3 install_zerotier_with_ssh_key.py --host 192.168.1.1 --user root --key C:\Users\rahma\.ssh\id_ed25519 --reboot
+
+python3 openwrt_zerotier_setup.py --host 192.168.1.1 --user root --key C:\Users\rahma\.ssh\id_ed25519 --reboot
+
+python3 openwrt_zerotier_setup.py --host 192.168.1.1 --user root --password root --force-password --reboot
