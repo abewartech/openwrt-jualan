@@ -1,0 +1,383 @@
+2025-11-08T04:47:25.078470Z  Connecting to 192.168.1.1:22 as root ...
+2025-11-08T04:47:26.291631Z  SSH error: Authentication failed.
+2025-11-08T04:47:45.503141Z  Connecting to 192.168.1.1:22 as root ...
+2025-11-08T04:47:46.798338Z  SSH error: Authentication failed.
+2025-11-08T04:48:44.030825Z  Connecting to 192.168.1.1:22 as root ...
+2025-11-08T04:48:45.003548Z  SSH connected
+2025-11-08T04:48:45.004542Z  RUN: sed -i 's/option check_signature/# option check_signature/g' /etc/opkg.conf || true
+2025-11-08T04:48:45.109745Z  Exit: 0
+2025-11-08T04:48:45.110850Z  RUN: ARCH=$(awk -F= '/OPENWRT_ARCH/ {print $2}' /etc/os-release 2>/dev/null | tr -d '"' || echo '')
+2025-11-08T04:48:45.217780Z  Exit: 0
+2025-11-08T04:48:45.218655Z  RUN: echo "src/gz custom_generic https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/generic" >> /etc/opkg/customfeeds.conf || true
+2025-11-08T04:48:45.327149Z  Exit: 0
+2025-11-08T04:48:45.328076Z  RUN: echo "src/gz custom_arch https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/${ARCH}" >> /etc/opkg/customfeeds.conf || true
+2025-11-08T04:48:45.433544Z  Exit: 0
+2025-11-08T04:48:45.434392Z  RUN: opkg update || true
+2025-11-08T04:48:51.871437Z  STDOUT: Downloading https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/generic/Packages.gz
+Updated list of available packages in /var/opkg-lists/custom_generic
+Downloading https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/mipsel_24kc/Packages.gz
+Updated list of available packages in /var/opkg-lists/custom_arch
+Downloading https://downloads.openwrt.org/releases/24.10.4/targets/ramips/mt76x8/packages/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_core
+Downloading https://downloads.openwrt.org/releases/24.10.4/packages/mipsel_24kc/base/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_base
+Downloading https://downloads.openwrt.org/releases/24.10.4/targets/ramips/mt76x8/kmods/6.6.110-1-7b067dbe1210780507b9fd888c130426/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_kmods
+Downloading https://downloads.openwrt.org/releases/24.10.4/packages/mipsel_24kc/luci/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_luci
+Downloading https://downloads.openwrt.org/releases/24.10.4/packages/mipsel_24kc/packages/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_packages
+Downloading https://downloads.openwrt.org/releases/24.10.4/packages/mipsel_24kc/routing/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_routing
+Downloading https://downloads.openwrt.org/releases/24.10.4/packages/mipsel_24kc/telephony/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_telephony
+2025-11-08T04:48:51.875673Z  STDERR: Collected errors:
+ * opkg_conf_parse_file: Duplicate src declaration (custom_generic https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/generic). Skipping.
+ * opkg_conf_parse_file: Duplicate src declaration (custom_arch https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/). Skipping.
+2025-11-08T04:48:51.878177Z  Exit: 0
+2025-11-08T04:48:51.880099Z  RUN: opkg update || true
+2025-11-08T04:48:57.839542Z  STDOUT: Downloading https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/generic/Packages.gz
+Updated list of available packages in /var/opkg-lists/custom_generic
+Downloading https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/mipsel_24kc/Packages.gz
+Updated list of available packages in /var/opkg-lists/custom_arch
+Downloading https://downloads.openwrt.org/releases/24.10.4/targets/ramips/mt76x8/packages/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_core
+Downloading https://downloads.openwrt.org/releases/24.10.4/packages/mipsel_24kc/base/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_base
+Downloading https://downloads.openwrt.org/releases/24.10.4/targets/ramips/mt76x8/kmods/6.6.110-1-7b067dbe1210780507b9fd888c130426/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_kmods
+Downloading https://downloads.openwrt.org/releases/24.10.4/packages/mipsel_24kc/luci/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_luci
+Downloading https://downloads.openwrt.org/releases/24.10.4/packages/mipsel_24kc/packages/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_packages
+Downloading https://downloads.openwrt.org/releases/24.10.4/packages/mipsel_24kc/routing/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_routing
+Downloading https://downloads.openwrt.org/releases/24.10.4/packages/mipsel_24kc/telephony/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_telephony
+2025-11-08T04:48:57.841723Z  STDERR: Collected errors:
+ * opkg_conf_parse_file: Duplicate src declaration (custom_generic https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/generic). Skipping.
+ * opkg_conf_parse_file: Duplicate src declaration (custom_arch https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/). Skipping.
+2025-11-08T04:48:57.844626Z  Exit: 0
+2025-11-08T04:48:57.846589Z  RUN: opkg install zerotier luci-app-zerotier luci-compat || true
+2025-11-08T04:49:07.494564Z  STDOUT: Package zerotier (1.14.1-r3) installed in root is up to date.
+Package luci-app-zerotier (1.0) installed in root is up to date.
+Package luci-compat (25.310.19382~20c4a4b) installed in root is up to date.
+2025-11-08T04:49:07.495705Z  STDERR: Collected errors:
+ * opkg_conf_parse_file: Duplicate src declaration (custom_generic https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/generic). Skipping.
+ * opkg_conf_parse_file: Duplicate src declaration (custom_arch https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/). Skipping.
+2025-11-08T04:49:07.496775Z  Exit: 0
+2025-11-08T04:49:07.497658Z  RUN: cp -a /etc/config/zerotier /tmp/zerotier.config.backup 2>/dev/null || true
+2025-11-08T04:49:07.636122Z  Exit: 0
+2025-11-08T04:49:07.637092Z  RUN: cp -a /etc/init.d/zerotier /tmp/zerotier.init.backup 2>/dev/null || true
+2025-11-08T04:49:07.742640Z  Exit: 0
+2025-11-08T04:49:07.743880Z  RUN: opkg remove zerotier || true
+2025-11-08T04:49:07.950207Z  STDOUT: No packages removed.
+2025-11-08T04:49:07.951020Z  STDERR: Collected errors:
+ * opkg_conf_parse_file: Duplicate src declaration (custom_generic https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/generic). Skipping.
+ * opkg_conf_parse_file: Duplicate src declaration (custom_arch https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/). Skipping.
+ * print_dependents_warning: Package zerotier is depended upon by packages:
+ * print_dependents_warning: 	luci-app-zerotier
+ * print_dependents_warning: These might cease to work if package zerotier is removed.
+
+ * print_dependents_warning: Force removal of this package with --force-depends.
+ * print_dependents_warning: Force removal of this package and its dependents
+ * print_dependents_warning: with --force-removal-of-dependent-packages.
+2025-11-08T04:49:07.952212Z  Exit: 0
+2025-11-08T04:49:07.952926Z  RUN: opkg update || true
+2025-11-08T04:49:18.023448Z  Command timeout after 10s
+2025-11-08T04:49:26.395042Z  STDOUT: Downloading https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/generic/Packages.gz
+2025-11-08T04:49:26.395759Z  Exit: 0
+2025-11-08T04:49:26.396489Z  RUN: opkg install luci-app-zerotier || true
+2025-11-08T04:49:35.514565Z  STDOUT: Package luci-app-zerotier (1.0) installed in root is up to date.
+2025-11-08T04:49:35.525182Z  STDERR: Collected errors:
+ * opkg_conf_parse_file: Duplicate src declaration (custom_generic https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/generic). Skipping.
+ * opkg_conf_parse_file: Duplicate src declaration (custom_arch https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/). Skipping.
+2025-11-08T04:49:35.526355Z  Exit: 0
+2025-11-08T04:49:35.528216Z  RUN: /etc/init.d/zerotier start || true
+2025-11-08T04:49:35.935361Z  STDOUT: disabled in config
+2025-11-08T04:49:35.936287Z  Exit: 0
+2025-11-08T04:49:35.937303Z  RUN: zerotier-cli join 56374ac9a4f632db || true
+2025-11-08T04:49:36.162917Z  STDOUT: 200 join OK
+2025-11-08T04:49:36.164238Z  Exit: 0
+2025-11-08T04:49:36.165374Z  RUN: sleep 2 || true
+2025-11-08T04:49:38.283414Z  Exit: 0
+2025-11-08T04:49:38.284818Z  RUN: zerotier-cli status || true
+2025-11-08T04:49:38.390299Z  STDOUT: 200 info eb832763dc 1.14.1 ONLINE
+2025-11-08T04:49:38.391005Z  Exit: 0
+2025-11-08T04:49:38.391730Z  RUN: zerotier-cli listnetworks || true
+2025-11-08T04:49:38.525290Z  STDOUT: 200 listnetworks <nwid> <name> <mac> <status> <type> <dev> <ZT assigned ips>
+200 listnetworks 56374ac9a4f632db determined_house da:d9:75:83:aa:96 OK PRIVATE ztt6j3z637 10.144.237.85/16
+2025-11-08T04:49:38.526226Z  Exit: 0
+2025-11-08T04:49:38.527073Z  RUN: opkg update || true
+2025-11-08T04:49:43.286652Z  STDOUT: Downloading https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/generic/Packages.gz
+Updated list of available packages in /var/opkg-lists/custom_generic
+Downloading https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/mipsel_24kc/Packages.gz
+Updated list of available packages in /var/opkg-lists/custom_arch
+Downloading https://downloads.openwrt.org/releases/24.10.4/targets/ramips/mt76x8/packages/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_core
+Downloading https://downloads.openwrt.org/releases/24.10.4/packages/mipsel_24kc/base/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_base
+Downloading https://downloads.openwrt.org/releases/24.10.4/targets/ramips/mt76x8/kmods/6.6.110-1-7b067dbe1210780507b9fd888c130426/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_kmods
+Downloading https://downloads.openwrt.org/releases/24.10.4/packages/mipsel_24kc/luci/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_luci
+Downloading https://downloads.openwrt.org/releases/24.10.4/packages/mipsel_24kc/packages/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_packages
+Downloading https://downloads.openwrt.org/releases/24.10.4/packages/mipsel_24kc/routing/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_routing
+Downloading https://downloads.openwrt.org/releases/24.10.4/packages/mipsel_24kc/telephony/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_telephony
+2025-11-08T04:49:43.287740Z  STDERR: Collected errors:
+ * opkg_conf_parse_file: Duplicate src declaration (custom_generic https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/generic). Skipping.
+ * opkg_conf_parse_file: Duplicate src declaration (custom_arch https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/). Skipping.
+2025-11-08T04:49:43.288476Z  Exit: 0
+2025-11-08T04:49:43.289201Z  RUN: opkg install socat netcat mosquitto-client mosquitto-client-ssl lua-mosquitto || true
+2025-11-08T04:49:53.340246Z  Command timeout after 10s
+2025-11-08T04:49:54.399598Z  STDOUT: Package socat (1.8.0.3-r2) installed in root is up to date.
+2025-11-08T04:49:54.400594Z  Exit: 0
+2025-11-08T04:49:54.401441Z  RUN: /etc/init.d/zerotier enable
+2025-11-08T04:49:54.646411Z  Exit: 0
+2025-11-08T04:49:54.647680Z  zerotier enabled via init script
+2025-11-08T04:49:54.648716Z  RUN: /etc/init.d/zerotier start || true
+2025-11-08T04:49:55.054536Z  STDOUT: disabled in config
+2025-11-08T04:49:55.055720Z  Exit: 0
+2025-11-08T04:49:57.056780Z  RUN: zerotier-cli join 56374ac9a4f632db || true
+2025-11-08T04:49:57.163549Z  STDOUT: 200 join OK
+2025-11-08T04:49:57.164935Z  Exit: 0
+2025-11-08T04:49:57.166095Z  RUN: zerotier-cli status || true
+2025-11-08T04:49:57.295021Z  STDOUT: 200 info eb832763dc 1.14.1 ONLINE
+2025-11-08T04:49:57.298251Z  Exit: 0
+2025-11-08T04:49:57.299123Z  RUN: zerotier-cli listnetworks || true
+2025-11-08T04:49:57.424636Z  STDOUT: 200 listnetworks <nwid> <name> <mac> <status> <type> <dev> <ZT assigned ips>
+200 listnetworks 56374ac9a4f632db determined_house da:d9:75:83:aa:96 OK PRIVATE ztt6j3z637 10.144.237.85/16
+2025-11-08T04:49:57.427217Z  Exit: 0
+2025-11-08T04:49:57.428262Z  RUN: opkg update || true
+2025-11-08T04:50:02.585579Z  STDOUT: Downloading https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/generic/Packages.gz
+Updated list of available packages in /var/opkg-lists/custom_generic
+Downloading https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/mipsel_24kc/Packages.gz
+Updated list of available packages in /var/opkg-lists/custom_arch
+Downloading https://downloads.openwrt.org/releases/24.10.4/targets/ramips/mt76x8/packages/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_core
+Downloading https://downloads.openwrt.org/releases/24.10.4/packages/mipsel_24kc/base/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_base
+Downloading https://downloads.openwrt.org/releases/24.10.4/targets/ramips/mt76x8/kmods/6.6.110-1-7b067dbe1210780507b9fd888c130426/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_kmods
+Downloading https://downloads.openwrt.org/releases/24.10.4/packages/mipsel_24kc/luci/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_luci
+Downloading https://downloads.openwrt.org/releases/24.10.4/packages/mipsel_24kc/packages/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_packages
+Downloading https://downloads.openwrt.org/releases/24.10.4/packages/mipsel_24kc/routing/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_routing
+Downloading https://downloads.openwrt.org/releases/24.10.4/packages/mipsel_24kc/telephony/Packages.gz
+Updated list of available packages in /var/opkg-lists/openwrt_telephony
+2025-11-08T04:50:02.586391Z  STDERR: Collected errors:
+ * opkg_conf_parse_file: Duplicate src declaration (custom_generic https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/generic). Skipping.
+ * opkg_conf_parse_file: Duplicate src declaration (custom_arch https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/). Skipping.
+2025-11-08T04:50:02.587194Z  Exit: 0
+2025-11-08T04:50:02.588068Z  RUN: opkg install socat netcat mosquitto-client mosquitto-client-ssl lua-mosquitto || true
+2025-11-08T04:50:12.635873Z  Command timeout after 10s
+2025-11-08T04:50:14.012545Z  STDOUT: Package socat (1.8.0.3-r2) installed in root is up to date.
+2025-11-08T04:50:14.013232Z  Exit: 0
+2025-11-08T04:50:14.014329Z  RUN: cat <<'EOF' > /etc/init.d/aisproxy
+#!/bin/sh /etc/rc.common
+# AIS TCP proxy: dengarkan port LAN:2003, forward ke 10.0.0.156:2001
+START=95
+STOP=10
+
+start() {
+    echo "Starting AIS proxy (socat) ..."
+    procd_open_instance
+    procd_set_param command /usr/bin/socat TCP-LISTEN:2003,fork TCP:10.0.0.156:2001
+    procd_set_param stdout 1
+    procd_set_param stderr 1
+    procd_set_param respawn
+    procd_close_instance
+}
+
+stop() {
+    procd_killall socat 15 || true
+}
+
+EOF
+
+2025-11-08T04:50:14.165534Z  Exit: 0
+2025-11-08T04:50:14.166517Z  RUN: chmod +x /etc/init.d/aisproxy || true
+2025-11-08T04:50:14.274906Z  Exit: 0
+2025-11-08T04:50:14.275849Z  RUN: /etc/init.d/aisproxy enable
+2025-11-08T04:50:14.380576Z  Exit: 0
+2025-11-08T04:50:14.381502Z  aisproxy enabled via init script
+2025-11-08T04:50:14.382281Z  RUN: /etc/init.d/aisproxy start || true
+2025-11-08T04:50:14.514267Z  STDOUT: Starting AIS proxy (socat) ...
+2025-11-08T04:50:14.515009Z  STDERR: /etc/rc.common: line 8: procd_open_instance: not found
+/etc/rc.common: line 9: procd_set_param: not found
+/etc/rc.common: line 10: procd_set_param: not found
+/etc/rc.common: line 11: procd_set_param: not found
+/etc/rc.common: line 12: procd_set_param: not found
+/etc/rc.common: line 13: procd_close_instance: not found
+2025-11-08T04:50:14.515862Z  Exit: 0
+2025-11-08T04:50:14.516512Z  RUN: logread | tail -n 20 || true
+2025-11-08T04:50:14.825522Z  STDOUT: Sat Nov  8 04:33:34 2025 daemon.notice wpa_supplicant[1408]: phy0-sta0: Unknown event 37
+Sat Nov  8 04:36:24 2025 daemon.warn odhcpd[1588]: No default route present, setting ra_lifetime to 0!
+Sat Nov  8 04:42:25 2025 daemon.warn odhcpd[1588]: No default route present, setting ra_lifetime to 0!
+Sat Nov  8 04:44:31 2025 daemon.notice netifd: wwan (4226): udhcpc: sending renew to server 192.168.18.1
+Sat Nov  8 04:44:31 2025 daemon.notice netifd: wwan (4226): udhcpc: lease of 192.168.18.208 obtained from 192.168.18.1, lease time 3600
+Sat Nov  8 04:47:25 2025 authpriv.info dropbear[11953]: Child connection from 192.168.1.217:59769
+Sat Nov  8 04:47:26 2025 authpriv.warn dropbear[11953]: User 'root' has blank password, rejected
+Sat Nov  8 04:47:26 2025 authpriv.info dropbear[11953]: Exit before auth from <192.168.1.217:59769>: (user 'root', 1 fails): Exited normally
+Sat Nov  8 04:47:45 2025 authpriv.info dropbear[11954]: Child connection from 192.168.1.217:49786
+Sat Nov  8 04:47:46 2025 authpriv.warn dropbear[11954]: User 'root' has blank password, rejected
+Sat Nov  8 04:47:46 2025 authpriv.info dropbear[11954]: Exit before auth from <192.168.1.217:49786>: (user 'root', 1 fails): Exited normally
+Sat Nov  8 04:48:19 2025 authpriv.info dropbear[11955]: Child connection from 192.168.1.217:63045
+Sat Nov  8 04:48:20 2025 authpriv.notice dropbear[11955]: Auth succeeded with blank password for 'root' from 192.168.1.217:63045
+Sat Nov  8 04:48:23 2025 authpriv.info dropbear[11955]: Exit (root) from <192.168.1.217:63045>: Disconnect received
+Sat Nov  8 04:48:32 2025 daemon.notice wpa_supplicant[1408]: phy0-sta0: WNM: Preferred List Available
+Sat Nov  8 04:48:39 2025 auth.err passwd: password for root changed by root
+Sat Nov  8 04:48:44 2025 authpriv.info dropbear[11974]: Child connection from 192.168.1.217:61736
+Sat Nov  8 04:48:45 2025 authpriv.notice dropbear[11974]: Password auth succeeded for 'root' from 192.168.1.217:61736
+Sat Nov  8 04:49:02 2025 daemon.notice wpa_supplicant[1408]: phy0-sta0: WNM: Preferred List Available
+Sat Nov  8 04:49:09 2025 daemon.notice wpa_supplicant[1408]: phy0-sta0: Reject scan trigger since one is already pending
+2025-11-08T04:50:14.827003Z  Exit: 0
+2025-11-08T04:50:14.827946Z  RUN: cat <<'EOF' > /root/aismqtt.sh
+#!/bin/sh
+BROKER="mqtt.cakrawala.id"
+TOPIC="ais/raw"
+SRC_HOST="10.0.0.156"
+SRC_PORT=2001
+
+while true; do
+  echo "Connecting to $SRC_HOST:$SRC_PORT ..."
+  if nc -w 10 $SRC_HOST $SRC_PORT | while IFS= read -r line; do
+    [ -z "$line" ] && continue
+    echo "$line" | mosquitto_pub -h "$BROKER" -t "$TOPIC" -s
+  done; then
+    echo "Connection closed cleanly. Reconnect after 2s."
+    sleep 2
+  else
+    echo "Connection failed. Retry in 5s."
+    sleep 5
+  fi
+done
+
+EOF
+
+2025-11-08T04:50:14.964534Z  Exit: 0
+2025-11-08T04:50:14.965493Z  RUN: chmod +x /root/aismqtt.sh || true
+2025-11-08T04:50:15.070943Z  Exit: 0
+2025-11-08T04:50:15.071850Z  RUN: cat <<'EOF' > /etc/init.d/aismqtt
+#!/bin/sh /etc/rc.common
+START=96
+STOP=10
+
+start() {
+    procd_open_instance
+    procd_set_param command /bin/sh /root/aismqtt.sh
+    procd_set_param respawn
+    procd_close_instance
+}
+
+stop() {
+    procd_killall sh 15 || true
+}
+
+EOF
+
+2025-11-08T04:50:15.177502Z  Exit: 0
+2025-11-08T04:50:15.178430Z  RUN: chmod +x /etc/init.d/aismqtt || true
+2025-11-08T04:50:15.283183Z  Exit: 0
+2025-11-08T04:50:15.283967Z  RUN: /etc/init.d/aismqtt enable
+2025-11-08T04:50:15.388738Z  Exit: 0
+2025-11-08T04:50:15.389754Z  aismqtt enabled via init script
+2025-11-08T04:50:15.390271Z  RUN: /etc/init.d/aismqtt start || true
+2025-11-08T04:50:15.524508Z  STDERR: /etc/rc.common: line 6: procd_open_instance: not found
+/etc/rc.common: line 7: procd_set_param: not found
+/etc/rc.common: line 8: procd_set_param: not found
+/etc/rc.common: line 9: procd_close_instance: not found
+2025-11-08T04:50:15.525470Z  Exit: 0
+2025-11-08T04:50:15.526206Z  RUN: ps w | grep aismqtt || true
+2025-11-08T04:50:15.664914Z  STDOUT: 12458 root      1396 S    ash -c ps w | grep aismqtt || true
+12460 root      1396 S    grep aismqtt
+2025-11-08T04:50:15.666418Z  Exit: 0
+2025-11-08T04:50:15.667742Z  RUN: uci add firewall redirect
+2025-11-08T04:50:15.773353Z  STDOUT: cfg0f3837
+2025-11-08T04:50:15.774167Z  Exit: 0
+2025-11-08T04:50:15.774776Z  RUN: uci set firewall.@redirect[-1].name='RTSP_554'
+2025-11-08T04:50:15.878952Z  Exit: 0
+2025-11-08T04:50:15.879592Z  RUN: uci set firewall.@redirect[-1].src='wan'
+2025-11-08T04:50:15.984100Z  Exit: 0
+2025-11-08T04:50:15.984773Z  RUN: uci set firewall.@redirect[-1].src_dport='554'
+2025-11-08T04:50:16.088920Z  Exit: 0
+2025-11-08T04:50:16.089901Z  RUN: uci set firewall.@redirect[-1].dest='lan'
+2025-11-08T04:50:16.195806Z  Exit: 0
+2025-11-08T04:50:16.196866Z  RUN: uci set firewall.@redirect[-1].dest_ip='10.0.0.64'
+2025-11-08T04:50:16.305372Z  Exit: 0
+2025-11-08T04:50:16.306637Z  RUN: uci set firewall.@redirect[-1].dest_port='554'
+2025-11-08T04:50:16.412521Z  Exit: 0
+2025-11-08T04:50:16.413583Z  RUN: uci set firewall.@redirect[-1].proto='tcp'
+2025-11-08T04:50:16.518738Z  Exit: 0
+2025-11-08T04:50:16.519657Z  RUN: uci commit firewall
+2025-11-08T04:50:16.625404Z  Exit: 0
+2025-11-08T04:50:16.626252Z  RUN: /etc/init.d/firewall restart
+2025-11-08T04:50:23.761000Z  STDERR: [!] Section zerotier option 'reload' is not supported by fw4
+uci: Entry not found
+sh: out of range
+uci: Entry not found
+sh: out of range
+Include '/etc/zerotier.start' failed with exit code 2
+2025-11-08T04:50:23.763880Z  Exit: 0
+2025-11-08T04:50:23.764821Z  RUN: uci add firewall redirect
+2025-11-08T04:50:23.870248Z  STDOUT: cfg103837
+2025-11-08T04:50:23.871444Z  Exit: 0
+2025-11-08T04:50:23.872012Z  RUN: uci set firewall.@redirect[-1].name='CAM_HTTP_80'
+2025-11-08T04:50:23.977166Z  Exit: 0
+2025-11-08T04:50:23.978391Z  RUN: uci set firewall.@redirect[-1].src='wan'
+2025-11-08T04:50:24.087131Z  Exit: 0
+2025-11-08T04:50:24.087936Z  RUN: uci set firewall.@redirect[-1].src_dport='8378'
+2025-11-08T04:50:24.197248Z  Exit: 0
+2025-11-08T04:50:24.198744Z  RUN: uci set firewall.@redirect[-1].dest='lan'
+2025-11-08T04:50:24.305183Z  Exit: 0
+2025-11-08T04:50:24.306552Z  RUN: uci set firewall.@redirect[-1].dest_ip='10.0.0.64'
+2025-11-08T04:50:24.411845Z  Exit: 0
+2025-11-08T04:50:24.413262Z  RUN: uci set firewall.@redirect[-1].dest_port='80'
+2025-11-08T04:50:24.519182Z  Exit: 0
+2025-11-08T04:50:24.520400Z  RUN: uci set firewall.@redirect[-1].proto='tcp'
+2025-11-08T04:50:24.625624Z  Exit: 0
+2025-11-08T04:50:24.626413Z  RUN: uci commit firewall
+2025-11-08T04:50:24.731717Z  Exit: 0
+2025-11-08T04:50:24.737956Z  RUN: /etc/init.d/firewall restart
+2025-11-08T04:50:28.261844Z  STDERR: [!] Section zerotier option 'reload' is not supported by fw4
+uci: Entry not found
+sh: out of range
+uci: Entry not found
+sh: out of range
+Include '/etc/zerotier.start' failed with exit code 2
+2025-11-08T04:50:28.262783Z  Exit: 0
+2025-11-08T04:50:28.263305Z  RUN: uci add firewall redirect
+2025-11-08T04:50:28.414110Z  STDOUT: cfg113837
+2025-11-08T04:50:28.415498Z  Exit: 0
+2025-11-08T04:50:28.416409Z  RUN: uci set firewall.@redirect[-1].name='AIS_PROXY'
+2025-11-08T04:50:28.525235Z  Exit: 0
+2025-11-08T04:50:28.526951Z  RUN: uci set firewall.@redirect[-1].src='wan'
+2025-11-08T04:50:28.631894Z  Exit: 0
+2025-11-08T04:50:28.632596Z  RUN: uci set firewall.@redirect[-1].src_dport='8379'
+2025-11-08T04:50:28.737715Z  Exit: 0
+2025-11-08T04:50:28.738929Z  RUN: uci set firewall.@redirect[-1].dest='lan'
+2025-11-08T04:50:28.844607Z  Exit: 0
+2025-11-08T04:50:28.845520Z  RUN: uci set firewall.@redirect[-1].dest_ip='10.0.0.156'
+2025-11-08T04:50:28.950876Z  Exit: 0
+2025-11-08T04:50:28.951873Z  RUN: uci set firewall.@redirect[-1].dest_port='2001'
+2025-11-08T04:50:29.056854Z  Exit: 0
+2025-11-08T04:50:29.057497Z  RUN: uci set firewall.@redirect[-1].proto='tcp'
+2025-11-08T04:50:29.162475Z  Exit: 0
+2025-11-08T04:50:29.163356Z  RUN: uci commit firewall
+2025-11-08T04:50:29.268598Z  Exit: 0
+2025-11-08T04:50:29.269763Z  RUN: /etc/init.d/firewall restart
+2025-11-08T04:50:33.128459Z  STDERR: [!] Section zerotier option 'reload' is not supported by fw4
+uci: Entry not found
+sh: out of range
+uci: Entry not found
+sh: out of range
+Include '/etc/zerotier.start' failed with exit code 2
+2025-11-08T04:50:33.130865Z  Exit: 0
+2025-11-08T04:50:33.132443Z  All commands submitted. Check router logs and services for live status.
+2025-11-08T04:50:33.133590Z  Local log saved to openwrt_setup.log
+2025-11-08T04:50:33.136796Z  SSH connection closed
