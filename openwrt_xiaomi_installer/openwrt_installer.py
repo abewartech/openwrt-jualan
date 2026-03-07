@@ -31,10 +31,11 @@ import logging
 import sys
 import traceback
 from pathlib import Path
+from typing import Callable, Optional
 
 import yaml
 
-# ── Local imports ────────────────────────────────────────────────────────────
+# ---- Local imports ----------------------------------------------------------
 from utils.logger import setup_logger, get_logger
 from utils.windows_helper import enable_ansi_colors, warn_if_not_admin
 from modules.detector import RouterDetector, RouterInfo
@@ -45,11 +46,24 @@ from modules.flasher import Flasher
 from modules.recovery import RecoveryManager
 from modules.telnet_client import TelnetClient
 
-# ─────────────────────────────────────────────────────────────────────────────
-# Constants
-# ─────────────────────────────────────────────────────────────────────────────
+# ---------------------------------------------------------------------------
+# Config path: works both as a .py script AND as a PyInstaller .exe
+# ---------------------------------------------------------------------------
 
-CONFIG_PATH = Path(__file__).parent / "config.yaml"
+def _get_base_dir() -> Path:
+    """
+    When frozen by PyInstaller, __file__ is inside a temp directory.
+    sys.executable points to the actual .exe location.
+    When running as a normal script, use __file__.
+    """
+    if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+        # PyInstaller bundles data files next to the exe
+        return Path(sys.executable).parent
+    return Path(__file__).parent
+
+
+BASE_DIR           = _get_base_dir()
+CONFIG_PATH        = BASE_DIR / "config.yaml"
 DEFAULT_ROUTER_IP  = "192.168.31.1"
 DEFAULT_OPENWRT_IP = "192.168.1.1"
 MODEL_MAP = {
@@ -164,11 +178,21 @@ def print_banner() -> None:
 # Main installation pipeline
 # ─────────────────────────────────────────────────────────────────────────────
 
-def run_install(args: argparse.Namespace, cfg: dict, log: logging.Logger) -> int:
+def run_install(
+    args: argparse.Namespace,
+    cfg: dict,
+    log: logging.Logger,
+    progress_callback: Optional[Callable[[int, str], None]] = None,
+) -> int:
     """
     Full installation pipeline.
     Returns 0 on success, non-zero on failure.
+    progress_callback(step, description) is called at each stage (for GUI).
     """
+
+    def _progress(step: int, desc: str = "") -> None:
+        if progress_callback:
+            progress_callback(step, desc)
 
     # ── Step 1: Detect router ─────────────────────────────────────────────────
     log.info("─" * 60)
