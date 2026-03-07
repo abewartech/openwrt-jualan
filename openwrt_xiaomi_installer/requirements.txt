@@ -1,0 +1,10 @@
+requests>=2.28.0
+paramiko>=3.0.0
+tqdm>=4.65.0
+pycryptodome>=3.17.0
+colorama>=0.4.6
+pyyaml>=6.0
+ftplib2>=0.1.0
+# pexpect is NOT supported on Windows natively; use WSL or wexpect as alternative
+wexpect>=4.0.0; sys_platform == "win32"
+pexpect>=4.8.0; sys_platform != "win32"

