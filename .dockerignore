@@ -1,4 +1,10 @@
+# build context exclusions
+.git/
+__pycache__/
+*.pyc
+*.log
 firmwares/
 readme/
+openwrt.bin
 .dockerignore
 Dockerfile
